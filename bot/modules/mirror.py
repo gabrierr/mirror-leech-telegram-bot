@@ -395,7 +395,7 @@ def _mirror(bot, update, isZip=False, extract=False, isQbit=False, isLeech=False
 
     if not bot_utils.is_url(link) and not bot_utils.is_magnet(link) and not os.path.exists(link):
         help_msg = f'<b>Send link along with command line:</b>'
-        help_msg += f'\n<code>/command</code> {link} |newname pswd: mypassword [𝚣𝚒𝚙/𝚞𝚗𝚣𝚒𝚙]''
+        help_msg += f'\n<code>/command</code> {link} |newname pswd: mypassword [𝚣𝚒𝚙/𝚞𝚗𝚣𝚒𝚙]'
         help_msg += f'\n\n<b>By replying to link or file:</b>'
         help_msg += f'\n<code>/command</code> |newname pswd: mypassword [𝚣𝚒𝚙/𝚞𝚗𝚣𝚒𝚙]'
         help_msg += f'\n\n<b>Direct link authorization:</b>'
