@@ -70,7 +70,7 @@ class MirrorListener(listeners.MirrorListeners):
 
     def onDownloadComplete(self):
         with download_dict_lock:
-            LOGGER.info(f"Download selesai: {download_dict[self.uid].name()}")
+            LOGGER.info(f"Download completed: {download_dict[self.uid].name()}")
             download = download_dict[self.uid]
             name = str(download.name()).replace('/', '')
             gid = download.gid()
@@ -124,7 +124,7 @@ class MirrorListener(listeners.MirrorListeners):
                                 else:
                                     result = subprocess.run(["7z", "x", m_path, f"-o{dirpath}"])
                                 if result.returncode != 0:
-                                    LOGGER.warning('Tidak dapat extract arsip!')
+                                    LOGGER.warning('unable to extract archive!')
                                 break
                         for filee in files:
                             if filee.endswith(".rar") or re.search(r'\.r\d+$', filee) \
