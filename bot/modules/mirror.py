@@ -401,7 +401,7 @@ def _mirror(bot, update, isZip=False, extract=False, isQbit=False, isLeech=False
         help_msg += f'\n\n<b>Direct link authorization:</b>'
         help_msg += f'\n<code>/command</code> {link} |newname pswd: mypassword\nusername\npassword'
         help_msg += f'\n\n<b>Qbittorrent selection:</b>'
-        help_msg += f'\n<code>/qbcommand</code> <b>s</b> {link} or by replying to {file}'
+        help_msg += f'\n<code>/qbcommand</code> <b>s</b> {link} or by replying to file'
         return sendMessage(help_msg, bot, update)
 
     LOGGER.info(link)
