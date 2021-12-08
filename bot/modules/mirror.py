@@ -70,7 +70,7 @@ class MirrorListener(listeners.MirrorListeners):
 
     def onDownloadComplete(self):
         with download_dict_lock:
-            LOGGER.info(f"Download completed: {download_dict[self.uid].name()}")
+            LOGGER.info(f"Download selesai: {download_dict[self.uid].name()}")
             download = download_dict[self.uid]
             name = str(download.name()).replace('/', '')
             gid = download.gid()
@@ -124,7 +124,7 @@ class MirrorListener(listeners.MirrorListeners):
                                 else:
                                     result = subprocess.run(["7z", "x", m_path, f"-o{dirpath}"])
                                 if result.returncode != 0:
-                                    LOGGER.warning('Unable to extract archive!')
+                                    LOGGER.warning('Tidak dapat extract arsip!')
                                 break
                         for filee in files:
                             if filee.endswith(".rar") or re.search(r'\.r\d+$', filee) \
@@ -141,7 +141,7 @@ class MirrorListener(listeners.MirrorListeners):
                     if result.returncode == 0:
                         LOGGER.info(f"Extract Path: {path}")
                         os.remove(m_path)
-                        LOGGER.info(f"Deleting archive: {m_path}")
+                        LOGGER.info(f"Menghapus arsip: {m_path}")
                     else:
                         LOGGER.warning('Unable to extract archive! Uploading anyway')
                         path = f'{DOWNLOAD_DIR}{self.uid}/{name}'
@@ -227,7 +227,7 @@ class MirrorListener(listeners.MirrorListeners):
                 sendMessage(msg, self.bot, self.update)
             else:
                 chat_id = str(self.message.chat.id)[4:]
-                msg += f'\n<b>cc: </b>{uname}\n\n'
+                msg += f'\n<b>User: </b>{uname}\n\n'
                 fmsg = ''
                 for index, item in enumerate(list(files), start=1):
                     msg_id = files[item]
@@ -290,7 +290,7 @@ class MirrorListener(listeners.MirrorListeners):
             else:
                 uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
             if uname is not None:
-                msg += f'\n\n<b>cc: </b>{uname}'
+                msg += f'\n\n<b>User: </b>{uname}'
             sendMarkup(msg, self.bot, self.update, InlineKeyboardMarkup(buttons.build_menu(2)))
             if self.isQbit and QB_SEED:
                 update_all_messages()
