@@ -68,6 +68,7 @@ def start(update, context):
         start_string = f'''
 This bot can mirror all your links to Google Drive!
 Type /{BotCommands.HelpCommand} to get a list of available commands
+Deployed by Gabrier @Rosysandro
 '''
         sendMarkup(start_string, context.bot, update, reply_markup)
     else:
